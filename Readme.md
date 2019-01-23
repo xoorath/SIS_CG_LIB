@@ -37,7 +37,7 @@ Or build the library, and package the build for codingame
 
 > `make package`
 
-You can find the resulting zip at `Build/sis_cg_lib-0.0.1-Linux.zip`.
+You can find the resulting zip at `Build/SIS_CG_LIB.zip`.
 
 For this project, you can include files relative to the root of the zip like so:
 
