@@ -1,11 +1,6 @@
 
 #include <vec3.h>
 #include <math.h>
-#include <stdexcept>
-
-struct Vec3Todo : public std::exception {
-    virtual char const * what() const throw() { return "TODO"; }
-};
 
 /*static*/ const Vector3 Vector3::Up        ( 0.f,  1.f,  0.f);
 /*static*/ const Vector3 Vector3::Down      ( 0.f, -1.f,  0.f);
@@ -38,143 +33,142 @@ float Vector3::MagnitudeSquared() const {
 
 // Evaluates the dot of this vector with the {other} vector.
 float Vector3::DotProduct(const Vector3& other) const {
-    throw Vec3Todo();
-    return 0.f;
+    return x*other.x + y*other.y + y*other.y;
 }
 
 // Evaluates the cross product of this vector with the {other} vector.
 Vector3 Vector3::CrossProduct(const Vector3& other) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(
+        y * other.z - z * other.y,
+        z * other.x - x * other.z,
+        x * other.y - y * other.x);
 }
 
 // Simple math operators.
 Vector3 Vector3::operator + (const Vector3& other) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x+other.x, y+other.y, z+other.z);
 }
 
 Vector3 Vector3::operator - (const Vector3& other) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x-other.x, y-other.y, z-other.z);
 }
 
 Vector3 Vector3::operator * (const Vector3& other) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x*other.x, y*other.y, z*other.z);
 }
 
 Vector3 Vector3::operator / (const Vector3& other) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x/other.x, y/other.y, z/other.z);
 }
 
 Vector3 Vector3::operator + (float value) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x+value, y+value, z+value);
 }
 
 Vector3 Vector3::operator - (float value) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x-value, y-value, z-value);
 }
 
 Vector3 Vector3::operator * (float value) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x*value, y*value, z*value);
 }
 
 Vector3 Vector3::operator / (float value) const {
-    throw Vec3Todo();
-    return Vector3(0.f);
+    return Vector3(x/value, y/value, z/value);
 }
 
 Vector3& Vector3::operator += (const Vector3& other) {
-    throw Vec3Todo();
+    x += other.x;
+    y += other.y;
+    z += other.z;
     return *this;
 }
 
 Vector3& Vector3::operator -= (const Vector3& other) {
-    throw Vec3Todo();
+    x -= other.x;
+    y -= other.y;
+    z -= other.z;
     return *this;
 }
 
 Vector3& Vector3::operator *= (const Vector3& other) {
-    throw Vec3Todo();
+    x *= other.x;
+    y *= other.y;
+    z *= other.z;
     return *this;
 }
 
 Vector3& Vector3::operator /= (const Vector3& other) {
-    throw Vec3Todo();
+    x /= other.x;
+    y /= other.y;
+    z /= other.z;
     return *this;
 }
 
 Vector3& Vector3::operator += (float value) {
-    throw Vec3Todo();
+    x += value;
+    y += value;
+    z += value;
     return *this;
 }
 
 Vector3& Vector3::operator -= (float value) {
-    throw Vec3Todo();
+    x -= value;
+    y -= value;
+    z -= value;
     return *this;
 }
 
 Vector3& Vector3::operator *= (float value) {
-    throw Vec3Todo();
+    x *= value;
+    y *= value;
+    z *= value;
     return *this;
 }
 
 Vector3& Vector3::operator /= (float value) {
-    throw Vec3Todo();
+    x /= value;
+    y /= value;
+    z /= value;
     return *this;
 }
 
 bool Vector3::operator == (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return x==other.x && y==other.y && z==other.z;
 }
 
 bool Vector3::operator != (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return x!=other.x || y!=other.y || z!=other.z;
 }
 
 bool Vector3::operator < (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() < other.MagnitudeSquared();
 }
 
 bool Vector3::operator <= (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() <= other.MagnitudeSquared();
 }
 
 bool Vector3::operator > (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() > other.MagnitudeSquared();
 }
 
 bool Vector3::operator >= (const Vector3& other) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() >= other.MagnitudeSquared();
 }
 
 bool Vector3::operator < (float value) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() < (value*value);
 }
 
 bool Vector3::operator <= (float value) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() <= (value*value);
 }
 
 bool Vector3::operator > (float value) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() > (value*value);
 }
 
 bool Vector3::operator >= (float value) const {
-    throw Vec3Todo();
-    return false;
+    return MagnitudeSquared() >= (value*value);
 }
