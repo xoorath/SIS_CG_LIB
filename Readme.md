@@ -30,8 +30,15 @@ Build the library
 
 > `make`
 
-Package the build for codingame
+
+Or build the library, and package the build for codingame
 
 > `make package`
 
 You can find the resulting zip at `Build/sis_cg_lib-0.0.1-Linux.zip`.
+
+For this project, you can include files relative to the root of the zip like so:
+
+```
+#include "deps/vec3.h"
+```
