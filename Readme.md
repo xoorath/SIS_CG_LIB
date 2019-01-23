@@ -37,14 +37,14 @@ Or build the library, and package the build for codingame
 
 > `make package`
 
-You can find the resulting zip at `Build/SIS_CG_LIB.zip`.
+You can find the resulting zip at `Build/sis_cg_lib.zip`.
 
 # Notes
 
 In codingame, you can include files relative to the root of the zip like so:
 
 ```
-#include "deps/vec3.h"
+#include "Include/vec3.h"
 ```
 
 For the project files themselves inside the `sources` directory, you can include files like so:
@@ -56,6 +56,6 @@ For the project files themselves inside the `sources` directory, you can include
 Note, if you need to include a header from a header, you need to use a relative path so it will compile both locally and with codingame, like so:
 
 ```
-// for this example, this file and vec3.h are both inside the deps folder
+// for this example, this file and vec3.h are both inside the Include folder
 #include "vec3.h"
 ```

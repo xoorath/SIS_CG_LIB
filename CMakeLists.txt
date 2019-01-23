@@ -1,30 +1,46 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.0.2)
+
 ###################################################################### PROJECT
-project(sis_cg_lib)
+
+project(sis_cg)
+
 ###################################################################### FILES
 
-file(GLOB_RECURSE SIS_CG_LIB_INC "deps/*.h" "deps/*.inl" )
-file(GLOB_RECURSE SIS_CG_LIB_SRC "sources/*.cpp" )
+# Setup source files for our target
+file(GLOB_RECURSE sis_cg_source 
+    "Source/*.cpp" 
+)
 
 ###################################################################### TARGET
 
-add_library(SIS_CG_Lib ${SIS_CG_LIB_INC} ${SIS_CG_LIB_SRC})
+# Note: 
+# don't edit the CMAKE_STATIC_LIBRARY_PREFIX var to remove the "lib" 
+# prefix on the library, codingame needs the prefix to find the file
 
-###################################################################### SETTINGS
+# Create our target as a library, link our sources
+add_library(sis_cg ${sis_cg_source})
 
-target_include_directories(SIS_CG_Lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/deps)
+###################################################################### TARGET SETTINGS
+
+# Setup include directories for our target
+target_include_directories(sis_cg PUBLIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/Include"
+)
 
 ###################################################################### PACKAGE
 
-install(DIRECTORY deps/
-    DESTINATION deps
-)
+# Add includes and target binary to our package
+install(DIRECTORY Include/ DESTINATION Include )
+install(TARGETS sis_cg ARCHIVE DESTINATION .)
 
-install(TARGETS SIS_CG_Lib
-    ARCHIVE DESTINATION .
-)
+# Name the package file (excluding extension)
+set(CPACK_PACKAGE_FILE_NAME "sis_cg")
 
-set(CPACK_PACKAGE_FILE_NAME "SIS_CG_LIB")
+# Don't create a self-named folder inside the package file
 set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
-set(CPACK_GENERATOR "ZIP" CACHE STRING "Generators to support. semi-colon delimited list")
+
+# Tell cpack to use the zip generator
+set(CPACK_GENERATOR "ZIP")
+
+# Use the CPack module
 include(CPack)
