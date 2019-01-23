@@ -13,7 +13,9 @@ _If you know what you're doing, you can easily get away with older/different ver
 Install dependancies: 
 
 > `sudo apt-get update`
+>
 > `sudo apt-get install build-essential`
+>
 > `sudo apt-get cmake`
 
 # How to build:
